@@ -32,7 +32,7 @@ export const createBooking = async (req, res, next) => {
       return next(new ErrorResponse('Show not found', 404));
     }
 
-    if (seats > show.availableSeats) {
+    if (seats.length > show.availableSeats) {
       return next(new ErrorResponse('Not enough seats available', 400));
     }
 
@@ -45,7 +45,7 @@ export const createBooking = async (req, res, next) => {
       bookingDate: new Date()
     });
 
-    show.availableSeats -= seats;
+    show.availableSeats -= seats.length;
     await show.save();
 
     const user = await User.findById(req.user.id);

@@ -16,7 +16,7 @@ function BookShow() {
   useEffect(() => {
     const fetchShow = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/bookings/show/${showId}`, {
+        const res = await axios.get(`${API_BASE_URL}/bookings/${showId}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         setShow(res.data.data);
@@ -53,7 +53,8 @@ function BookShow() {
         `${API_BASE_URL}/bookings`,
         {
           showId,
-          seats: selectedSeats
+          seats: selectedSeats,
+          totalAmount: selectedSeats.length * show.price
         },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }

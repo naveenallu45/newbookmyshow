@@ -4,9 +4,9 @@ import { protect } from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/:showId', protect, getShowDetails);
 router.get('/my-bookings', protect, getMyBookings);
-router.post('/', protect, createBooking);
 router.get('/booking/:id', protect, getBooking);
+router.get('/:showId', protect, getShowDetails);
+router.post('/', protect, createBooking);
 
 export default router; 
