@@ -1,2 +1,4 @@
 @import "tailwindcss";
 
+.dummy-frontend-change { color: inherit; }
+
